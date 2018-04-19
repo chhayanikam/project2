@@ -1,0 +1,109 @@
+--Create Blog Table
+create table Blog
+(
+BlogId number primary key,
+BlogName varchar2(100) not null,
+BlogContent varchar2(200) not null,
+CreatedDate date not null,
+UserName varchar2(100),
+Status varchar2(50),
+likes number
+)
+---------------------------------------------------------------
+--Create a sequence to Autogenerate primary key
+create sequence IdGenerator start with 100 increment by 1 nocycle;
+--------------------------------------------------------
+create or replace trigger BlogIdgen_trig 
+before insert on Blog for each row 
+begin
+:new.BlogId := IdGenerator.nextval;
+end;
+-----------------------------------------------
+insert into blog values(test_seq.nextval,'travel','content of the blog',sysdate,'chhaya','Active')
+----------------------------------------------------------------
+--User table 
+create table UserDetails
+(
+userId number primary key,
+userName varchar2(100) not null,
+password varchar2(50) not null,
+email varchar2(50),
+photo blob,
+gender varchar2(10),
+birthDate date,
+status varchar2(50),
+userRole varchar2(50)
+ )
+
+ --------------------------------------
+ create or replace trigger UserIdgen_trig 
+before insert on UserDetails for each row 
+begin
+:new.UserId := IdGenerator.nextval;
+end;
+-----------------------------------------
+
+create table Job
+(
+ JobId  number Primary Key,	
+ JobName varchar2(100),
+ designation varchar2(50),
+ salary number(10,2),
+ UserId number ,
+ DateOfApplication Date,
+ Constraint job_fk_User foreign key (UserId) references UserDetails(UserId)
+    )
+-----------------------------------------
+create or replace trigger JobIdgen_trig 
+before insert on Job for each row 
+begin
+:new.JobId := IdGenerator.nextval;
+end;
+--------------------------------------------    
+create table Forum(
+ForumId number primary key,
+ForumName varchar2(50),
+ForumContent varchar2(100),
+UserId Number,
+DateOfCreation date,
+Constraint Forum_fk_UserId Foreign key(UserId) REFERENCES UserDetails(UserId)
+
+)
+	
+--------------------------------------------------------
+create or replace trigger ForumIdgen_trig 
+before insert on Forum for each row 
+begin
+:new.ForumId := IdGenerator.nextval;
+end;
+--------------------------------------------------
+Create table ForumComment
+(
+ ForumCommentId  Number primary key,
+ ForumId number,
+ Fcomment varchar2(100),
+ UserId number,
+ DateOfComment Date,
+ Constraint ForumComment_fk_ForumId foreign key(ForumId) references Forum(ForumId),
+ Constraint ForumComment_fk_UserId foreign key(UserId) references UserDetails(UserId)
+ )
+ -----------------------------------------------------------
+ create or replace trigger ForumCommentIdgen_trig 
+before insert on ForumComment for each row 
+begin
+:new.ForumCommentId := IdGenerator.nextval;
+end;
+ ----------------------------------------------------
+ create Table BlogComment
+( BlogCommentId number primary key,
+	 UserId Number,
+	 bComment varchar2(100),
+     Constraint BlogComment_fk_UserId foreign key (UserId) references UserDetails(UserId)
+)
+----------------------------------------------------------
+ create or replace trigger BlogCommentIdgen_trig 
+before insert on BlogComment for each row 
+begin
+:new.BlogCommentId := IdGenerator.nextval;
+end;
+----------------------------------------------------

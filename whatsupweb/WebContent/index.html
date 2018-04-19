@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ************************** HEAD START ********************** -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="plugins/images/favicon.png">
+<title>Whats Up</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"	rel="stylesheet">
+<link	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"	rel="stylesheet">
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link	href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css"	rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/default.css" id="theme" rel="stylesheet">
+<script src="js/jquery.slimscroll.js"></script>
+<script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+<script src="plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
+<!--script	src="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js" -->
+<script	src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="js/custom.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="MyRouteConfig.js"></script>
+</head>
+
+<!-- ************************** HEAD END ********************** -->
+
+<body class="fix-header" ng-app="myApp">
+	<div id="wrapper">
+		<div ng-include=" 'includes/header.html' "></div>
+		<div ng-include=" 'includes/sidebar.html' "></div>
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<!-- /.row -->
+				<div class="row">
+					<div ng-view>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<div ng-include=" 'includes/footer.html' "></div>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form id="blogForm" method="post">
+<tr ng-repeat="blog in blogdata">
+ {{blog.blogName}}
+ {{blog.blogContent}}
+ {{blog.likes}}
+<input type="submit" value="like" ng-click="incrementlikes(blog.blogId)" />
+<input type="submit" value="Delete" ng-click="deleteblog()" />
+<input type="submit" value="Edit" ng-click="editblog()" />
+</tr>
+
+</form>
+</body>
+</html>
